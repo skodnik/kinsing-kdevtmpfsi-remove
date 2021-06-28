@@ -21,9 +21,9 @@ setup_color() {
 
 setup_color
 
-echo "\n${YELLOW}********${RESET}\n"
+echo "\n${YELLOW}********${RESET}"
 uname -a
-echo "\n${YELLOW}********${RESET}\n"
+echo "${YELLOW}********${RESET}\n"
 
 read -r -p "Try to find kinsing kdevtmpfsi miners? (y/n): " response
 case "$response" in
@@ -45,6 +45,7 @@ ps -ef | egrep 'kdevtmpfsi|kinsing' | grep -v 'grep'
 echo "\n${YELLOW}>>>>>>>> Processes started on behalf of the www-data user <<<<<<<<${RESET}\n"
 ps --user www-data
 
+echo "\n"
 read -r -p "Try to disable miners? (y/n): " response
 case "$response" in
 [yY][eE][sS] | [yY])
@@ -63,6 +64,7 @@ killall kinsing kdevtmpfsi
 echo "\n${YELLOW}>>>>>>>> List files in tmp dirs <<<<<<<<${RESET}\n"
 ls -laF /tmp /var/tmp
 
+echo "\n"
 read -r -p "Try to remove all files in tmp folders? (y/n): " response
 case "$response" in
 [yY][eE][sS] | [yY])
