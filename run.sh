@@ -1,19 +1,5 @@
 #!/usr/bin/env sh
 
-uname -a
-
-read -r -p "Try to find kinsing kdevtmpfsi miners? (y/n): " response
-case "$response" in
-[yY][eE][sS] | [yY])
-  echo "Start."
-  date
-  ;;
-*)
-  echo "Ok. Exit."
-  exit 0
-  ;;
-esac
-
 setup_color() {
   # Only use colors if connected to a terminal
   if [ -t 1 ]; then
@@ -35,8 +21,24 @@ setup_color() {
 
 setup_color
 
+echo "\n${YELLOW}********${RESET}\n"
+uname -a
+echo "\n${YELLOW}********${RESET}\n"
+
+read -r -p "Try to find kinsing kdevtmpfsi miners? (y/n): " response
+case "$response" in
+[yY][eE][sS] | [yY])
+  echo "Start."
+  date
+  ;;
+*)
+  echo "Ok. Exit."
+  exit 0
+  ;;
+esac
+
 # Search active processes by name
-echo "\n${YELLOW}>>>>>>>> Grep result <<<<<<<<${RESET}\n"
+echo "\n${YELLOW}>>>>>>>> Grep result by mask kdevtmpfsi|kinsing <<<<<<<<${RESET}\n"
 ps -ef | egrep 'kdevtmpfsi|kinsing' | grep -v 'grep'
 
 # Run processes
@@ -79,5 +81,6 @@ find / -iname kinsing -exec rm -fv {} \;
 rm -rf /tmp/* /tmp/.* /var/tmp/* /var/tmp/.*
 
 cat <<-EOF
-    ${GREEN}All done. I hope so...${RESET}
+
+${GREEN}All done. I hope so...${RESET}
 EOF
